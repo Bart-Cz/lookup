@@ -2,11 +2,11 @@
 
 namespace App\Providers;
 
-use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -58,6 +58,11 @@ class RouteServiceProvider extends ServiceProvider
     {
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
+        });
+
+        // 20 per minute can be too conservative
+        RateLimiter::for('lookup', function (Request $request) {
+            return Limit::perMinute(20)->by($request->ip());
         });
     }
 }

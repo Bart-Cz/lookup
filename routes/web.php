@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LookupController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,4 +13,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/lookup', [\App\Http\Controllers\LookupController::class, 'lookup']);
+Route::middleware('throttle:lookup')->get('/lookup', [LookupController::class, 'lookup'])->name('lookup');
+
+Route::get('/', function () {
+    return 'test';
+});

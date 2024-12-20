@@ -35,7 +35,7 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $e) {
-            //
+            // ideally monitoring tool here e.g. sentry and/or 404 handling if needed
         });
     }
 }
