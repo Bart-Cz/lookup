@@ -6,6 +6,11 @@ namespace App\Objects;
 
 class LookupDtoOutput
 {
+    /**
+     * @param string $id
+     * @param string $username
+     * @param string $avatar
+     */
     public function __construct(
         public string $id,
         public string $username,
@@ -13,6 +18,9 @@ class LookupDtoOutput
     ) {
     }
 
+    /**
+     * @return array
+     */
     public function toArray(): array
     {
         return [

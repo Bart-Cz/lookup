@@ -15,12 +15,20 @@ class XblApi implements LookupApiInterface
     protected string $xblUrlForId;
     protected string $xblUrlForUsername;
 
+    /**
+     * @param LookupClientApiInterface $lookupApi
+     */
     public function __construct(protected LookupClientApiInterface $lookupApi)
     {
         $this->xblUrlForId = config('lookup.xbl_url_for_id');
         $this->xblUrlForUsername = config('lookup.xbl_url_for_username');
     }
 
+    /**
+     * @param string|null $username
+     * @param string|null $lookupId
+     * @return string|null
+     */
     public function resolveApiUrl(?string $username, ?string $lookupId): ?string
     {
         // it seems that username has a precedence, hence if both id and username provided it takes username

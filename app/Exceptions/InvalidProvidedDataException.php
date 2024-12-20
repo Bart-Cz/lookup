@@ -11,7 +11,11 @@ class InvalidProvidedDataException extends Exception
     protected $code = 422;
     protected $message = 'The data provided is invalid.';
 
-    public function __construct($message = null, $code = null)
+    /**
+     * @param string|null $message
+     * @param int|null $code
+     */
+    public function __construct(?string $message = null, ?int $code = null)
     {
         $message = $message ?? $this->message;
         $code = $code ?? $this->code;

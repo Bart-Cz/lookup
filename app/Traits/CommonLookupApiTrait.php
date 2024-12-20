@@ -10,6 +10,13 @@ use App\Objects\LookupDtoOutput;
 
 trait CommonLookupApiTrait
 {
+    /**
+     * @param string|null $username
+     * @param string|null $lookupId
+     * @return LookupDtoOutput|null
+     * @throws InvalidProvidedDataException
+     * @throws LookupApiException
+     */
     public function fetchDataFromApi(?string $username, ?string $lookupId): ?LookupDtoOutput
     {
         $url = $this->resolveApiUrl($username, $lookupId);

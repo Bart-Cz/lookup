@@ -6,6 +6,9 @@ namespace App\Traits;
 
 trait EnumTrait
 {
+    /**
+     * @return array
+     */
     public static function values(): array
     {
         $cases = static::cases();

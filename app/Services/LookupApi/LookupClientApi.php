@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\Log;
 
 class LookupClientApi implements LookupClientApiInterface
 {
+    /**
+     * @param string $method
+     * @param string $endpoint
+     * @return object|null
+     * @throws LookupApiException
+     */
     public function request(string $method, string $endpoint): ?object
     {
         // try/catch for not exposing anything when exception thrown by api call (e.g. Guzzle issue)

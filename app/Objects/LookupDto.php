@@ -8,10 +8,19 @@ use App\Http\Requests\Lookup\LookupRequest;
 
 class LookupDto
 {
+    /**
+     * @param string $type
+     * @param string|null $id
+     * @param string|null $username
+     */
     public function __construct(protected string $type, protected ?string $id, protected ?string $username)
     {
     }
 
+    /**
+     * @param LookupRequest $request
+     * @return self
+     */
     public static function fromRequest(LookUpRequest $request): self
     {
         return new self(
@@ -21,6 +30,10 @@ class LookupDto
         );
     }
 
+    /**
+     * @param array $data
+     * @return self
+     */
     public static function fromArray(array $data): self
     {
         return new self(
@@ -30,21 +43,33 @@ class LookupDto
         );
     }
 
+    /**
+     * @return string
+     */
     public function getType(): string
     {
         return $this->type;
     }
 
+    /**
+     * @return string|null
+     */
     public function getId(): ?string
     {
         return $this->id;
     }
 
+    /**
+     * @return string|null
+     */
     public function getUsername(): ?string
     {
         return $this->username;
     }
 
+    /**
+     * @return string
+     */
     public function getCacheKey(): string
     {
         $idOrUsername = '';

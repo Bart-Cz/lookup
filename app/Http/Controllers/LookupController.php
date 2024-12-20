@@ -18,10 +18,17 @@ use App\Objects\LookupDto;
  */
 class LookupController extends Controller
 {
+    /**
+     * @param TypeHandler $typeHandler
+     */
     public function __construct(protected TypeHandler $typeHandler)
     {
     }
 
+    /**
+     * @param LookupRequest $request
+     * @return JsonResponse
+     */
     public function lookup(LookUpRequest $request): JsonResponse
     {
         $lookupDto = LookupDto::fromRequest($request);

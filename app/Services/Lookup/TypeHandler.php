@@ -7,10 +7,15 @@ namespace App\Services\Lookup;
 use App\Enums\TypeEnum;
 use Illuminate\Contracts\Container\Container;
 use App\Exceptions\InvalidProvidedDataException;
+use Illuminate\Contracts\Container\BindingResolutionException;
 
 class TypeHandler
 {
     protected array $handlers;
+
+    /**
+     * @param Container $container
+     */
     public function __construct(protected Container $container)
     {
         $this->handlers = [
@@ -20,6 +25,12 @@ class TypeHandler
         ];
     }
 
+    /**
+     * @param string $type
+     * @return TypeServiceAbstract
+     * @throws InvalidProvidedDataException
+     * @throws BindingResolutionException
+     */
     public function getHandler(string $type): TypeServiceAbstract
     {
         if (!isset($this->handlers[$type])) {

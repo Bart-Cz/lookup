@@ -11,10 +11,17 @@ use App\Objects\LookupDto;
 
 class TypeServiceAbstract
 {
+    /**
+     * @param LookupApiInterface $lookupApi
+     */
     public function __construct(public LookupApiInterface $lookupApi)
     {
     }
 
+    /**
+     * @param LookupDto $lookupDto
+     * @return LookupDtoOutput
+     */
     public function handle(LookupDto $lookupDto): LookupDtoOutput
     {
         $username = $lookupDto->getUsername();

@@ -14,12 +14,23 @@ class MinecraftApi implements LookupApiInterface
 {
     protected string $minecraftUrlForId;
     protected string $minecraftUrlForUsername;
+
+    /**
+     * @param LookupClientApiInterface $lookupApi
+     */
     public function __construct(protected LookupClientApiInterface $lookupApi)
     {
         $this->minecraftUrlForId = config('lookup.minecraft_url_for_id');
         $this->minecraftUrlForUsername = config('lookup.minecraft_url_for_username');
     }
 
+    /**
+     * @param string|null $username
+     * @param string|null $lookupId
+     * @return LookupDtoOutput|null
+     * @throws InvalidProvidedDataException
+     * @throws LookupApiException
+     */
     public function fetchDataFromApi(?string $username, ?string $lookupId): ?LookupDtoOutput
     {
         $url = $this->resolveApiUrl($username, $lookupId);
@@ -41,6 +52,11 @@ class MinecraftApi implements LookupApiInterface
         );
     }
 
+    /**
+     * @param string|null $username
+     * @param string|null $lookupId
+     * @return string|null
+     */
     public function resolveApiUrl(?string $username, ?string $lookupId): ?string
     {
         // it seems that id has a precedence, hence if both id and username provided it takes id

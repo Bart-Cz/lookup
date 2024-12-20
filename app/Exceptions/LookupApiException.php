@@ -11,7 +11,11 @@ class LookupApiException extends Exception
     protected $code = 500;
     protected $message = 'There was a problem retrieving the data';
 
-    public function __construct($message = null, $code = null)
+    /**
+     * @param string|null $message
+     * @param int|null $code
+     */
+    public function __construct(?string $message = null, ?int $code = null)
     {
         $message = $message ?? $this->message;
         $code = $code ?? $this->code;

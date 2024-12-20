@@ -15,11 +15,20 @@ class SteamApi implements LookupApiInterface
 
     protected string $steamUrlForId;
 
+    /**
+     * @param LookupClientApiInterface $lookupApi
+     */
     public function __construct(protected LookupClientApiInterface $lookupApi)
     {
         $this->steamUrlForId = config('lookup.steam_url_for_id');
     }
 
+    /**
+     * @param string|null $username
+     * @param string|null $lookupId
+     * @return string|null
+     * @throws InvalidProvidedDataException
+     */
     public function resolveApiUrl(?string $username, ?string $lookupId): ?string
     {
         if ($username && !$lookupId) {
