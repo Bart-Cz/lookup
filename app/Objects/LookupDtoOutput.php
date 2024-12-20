@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Objects;
 
@@ -8,7 +10,8 @@ class LookupDtoOutput
         public string $id,
         public string $username,
         public string $avatar,
-    ) {}
+    ) {
+    }
 
     public function toArray(): array
     {

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Services\LookupApi;
 
@@ -7,7 +9,6 @@ use App\Interfaces\LookupClientApiInterface;
 use App\Exceptions\LookupApiException;
 use App\Interfaces\LookupApiInterface;
 use App\Objects\LookupDtoOutput;
-
 
 class MinecraftApi implements LookupApiInterface
 {

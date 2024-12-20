@@ -35,5 +35,5 @@ class LookupThrottleTest extends TestCase
         $this->getJson(route('lookup', ['type' => 'steam', 'id' => $responseData['id']]))->assertStatus(429);
 
         Cache::flush();
-        }
+    }
 }

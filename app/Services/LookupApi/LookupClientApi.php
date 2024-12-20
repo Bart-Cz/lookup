@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Services\LookupApi;
 
@@ -9,7 +11,7 @@ use Illuminate\Support\Facades\Log;
 
 class LookupClientApi implements LookupClientApiInterface
 {
-    public function request(string $method, string $endpoint, array $params = []): ?object
+    public function request(string $method, string $endpoint): ?object
     {
         // try/catch for not exposing anything when exception thrown by api call (e.g. Guzzle issue)
         try {

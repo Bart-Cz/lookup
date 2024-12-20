@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Objects;
 
@@ -47,13 +49,11 @@ class LookupDto
     {
         $idOrUsername = '';
 
-        if(isset($this->id))
-        {
+        if (isset($this->id)) {
             $idOrUsername .= '_id_' . $this->id;
         }
 
-        if(isset($this->username))
-        {
+        if (isset($this->username)) {
             $idOrUsername .= '_username_' . $this->username;
         }
 
